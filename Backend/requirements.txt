@@ -1,5 +1,7 @@
-
+Flask-RESTful
 Flask-Cors
 Flask==2.0.1
 Flask-SQLAlchemy==2.5.1
 requests
+redis
+celery[redis] == 5.2.7

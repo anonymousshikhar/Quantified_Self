@@ -4,19 +4,19 @@ echo "Welcome to the automated setup system. This will setup the local virtual e
 echo "Then it will install all the required libraries and its dependencies."
 echo "You can rerun this without any issues."
 echo "================================================================================="
-if [ -d "$.backend_env" ];
+
+if [ -d ".backend_env" ];
 then 
-    echo ".backend_env folder exists. Installing using pip"
+    echo "Virtual env exist.Enabling virtual environment"
 else
-    echo "creating .backend_env and install using pip"
-    python3 -m venv .backend_env
+    echo "No virtual env found. Please run setup.sh first"
+    exit N
 fi
-# Activate virtual environment
+
+#Activate virtual env
 . .backend_env/bin/activate
+export ENV=development
 
-#Upgrade the pip 
-pip install --upgrade pip
-pip install -r requirements.txt
+celery -A main.celery beat --max-interval 30 -l info
 
-#Work done. Deactivating the virtual environment.
-deactivate
+deactivate 

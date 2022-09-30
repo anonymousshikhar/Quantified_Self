@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Cinzel&family=Homemade+Apple&family=La+Belle+Aurore&family=Montserrat:wght@100;400;700&family=Roboto+Serif:opsz,wght@8..144,200;8..144,400&family=Rock+Salt&family=Source+Code+Pro:wght@200&display=swap');
+    @page {
+    size: Letter;
+    margin:1cm 0.5cm 0.5cm 0.5cm;
+    background: rgb(67,198,172);
+background: linear-gradient(90deg, rgba(67,198,172,0.8435749299719888) 100%, rgba(248,255,174,0.5634628851540616) 100%);    
+
+    @top-left {
+        margin-left: 0.3rem;
+        content: 'Monthly Report';
+        font-family: Cinzel;
+    }
+    @top-right{
+        margin: 0.2rem 0.2rem;
+        content: counter(page);
+        font-family: Cinzel;
+        padding: 0.5rem 0.5rem;
+        background-color: aqua;
+        border-radius: 60%;
+    }
+}
+    h2{
+        font-family: Monteserat;
+    }
+    h3{
+        font-family: Cinzel;
+    }
+    *{  
+        box-sizing: border-box;
+        margin: 0; padding:0;
+    }
+    body{
+        margin: 0;
+        background: rgb(67,198,172);
+        background: linear-gradient(90deg, rgba(67,198,172,0.6727065826330532) 83%, rgba(248,255,174,0.5634628851540616) 100%);
+    }
+    
+    .container{
+        display: grid;
+        width: auto; height: auto;
+        grid-gap: 0.4em;    
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "header header header header"
+            "main main main main"
+            "main main main main"
+            "footer footer footer footer";
+    }
+    .header{
+        grid-area: header;
+        margin-top: 2rem; margin-bottom: 2rem;
+        padding: 1rem;
+    }
+    .main{
+        grid-area: main;
+        padding: 1rem 2rem;
+    }
+    .table_body{
+        font-family: Source Code Pro;
+        font: 300;
+    }
+    .footer{
+        position: fixed;
+        margin: 0 auto;
+        width: 100%;
+        bottom: 0;
+        grid-area: footer;
+        padding: 2rem 1rem;
+        background-color: rgba(144,123,222,0.4);
+    }
+    #tracker_info{
+        font-family: Cinzel;
+        font: 1100;
+    }
+    #tracker_info2{
+        font-family: Roboto Serif; 
+        font: 300;
+        font-size: 10pt;
+    }
+    table {
+        page-break-before: auto; 
+        font-size: 12px;
+        border-spacing: 1.2rem;
+    }
+    tr{page-break-inside: avoid; 
+        page-break-after: auto;}
+        th, td{
+            text-align: center;
+        }
+</style>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>The <span style="font-family: Calligraffitti;">LOGIT.</span></h1>
+        </header>
+
+        <div class="main">
+            <h2>Monthly Log Activity</h2><br>
+            {% for d in data %}
+            <hr><br>
+            <span id="tracker_info">Tracker ID: </span><span id="tracker_info2">{{d.tid}}</span><br>
+            <span id="tracker_info">Tracker Name: </span> <span id="tracker_info2">{{d.tname}}</span><br>
+            <span id="tracker_info">Tracker Description: </span><span id="tracker_info2">{{d.tdesc}}</span><br>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tracker ID</th>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Tracker value</th>
+                    <th scope="col">Note</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="table_body">
+                    {% for datas in d.logs %}
+                    <tr>   
+                        <td>{{ datas.tracker_id }}</td>
+                        <td>{{ datas.timestamp }}</td>
+                        <td>{{ datas.log_value }}</td>
+                        <td>{{ datas.remark }}</td>
+                     </tr>      
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br><br>
+            {% endfor %}
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>
+                    &copy; The LOGIT;
+                </span>
+        
+                <span>
+                    Contact: shikhar@gmail.com
+                </span>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
