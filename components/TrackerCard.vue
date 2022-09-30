@@ -33,6 +33,7 @@ export default {
   methods: {
     get_tracker_details() {
       this.$store.commit('setIsSettingOpened', false)
+      this.$store.commit('setIsDetailsOpened', true)
       console.log(this.tracker_id);
       fetch(
         "http://127.0.0.1:5000/api/tracker_data?tid=" + String(this.tracker_id)

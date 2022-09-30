@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="setting_header">
-      <h2>Tracker Setting</h2>
+      <h1>Tracker Setting</h1>
       <p>{{ tid }}</p>
       <hr />
       <div class="details">
         <p><b>TRACKER NAME:</b> {{ $store.state.tracker_name }}</p>
         <p><b>TRACKER DESCRIPTION:</b> {{ $store.state.tracker_desc }}</p>
         <p>
-          <b>TRACKER PRIMARY QUESTION:</b
-          >{{ $store.state.tracker_pri_question }}
+          <b>TRACKER PRIMARY QUESTION:</b> {{ $store.state.tracker_pri_question }}
           <button
+            id="change_ques_btn"
             class="btn btn-secondary"
             data-bs-toggle="modal"
             data-bs-target="#updateTrackerQues"
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <!-- Modal for adding tracker-->
+    <!-- Modal for changing tracker question-->
     <div
       class="modal fade"
       id="updateTrackerQues"
@@ -76,45 +76,6 @@
       </div>
     </div>
 
-    <div class="form_container">
-      <!-- <form @submit.prevent> -->
-      <!-- <div class="form-group">
-          <label for="formGroupExampleInput"><b>Question no: 1</b></label>
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Example input"
-            v-model="question[0]"
-            required
-          />
-        </div>
-        <div v-for="index in count" :key="index" class="form-group px-2 py-2">
-          <label for="formGroupExampleInput"
-            ><b>Question no: {{ index + 1 }}</b></label
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Enter"
-            v-model="question[index]"
-            required
-          />
-        </div>
-        <button class="btn btn-secondary my-2 mx-2" @click="add_questions()">
-          Add more questions
-        </button>
-        <button class="btn btn-secondary mx-2 my-2" @click="commit_questions()">
-          Done
-        </button>
-      </form> -->
-      <div class="timer">
-        <label for="timer">Select prefered time for report</label>
-        <input type="time" id="timer" name="timer" v-model="time" />
-        <button class="btn btn-secondary" @click="set_time()">Set Time</button>
-      </div>
-    </div>
     <button
       class="btn btn-danger"
       data-bs-toggle="modal"
@@ -305,9 +266,16 @@ export default {
 * {
   font-size: 0.9rem;
 }
-h2 {
-  font-size: 1.2rem;
-  font: 900;
+h1 {
+  font-family: Cinzel;
+  font-size: 1.5rem;
+
+}
+
+#change_ques_btn{
+  margin-left: .6rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
 }
 
 .container {
@@ -317,16 +285,9 @@ h2 {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 2rem;
 }
 
-.form_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: column;
-  min-width: 100%;
-}
 form {
   min-width: 100%;
 }
