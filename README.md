@@ -1,4 +1,4 @@
-# healthify
+# The LOGIT - 'You Need it; We Keep it.'
 
 ## Project setup
 ```
