@@ -24,7 +24,4 @@ npm run lint
 ```
 html : {template : './public/index.ejs'}
 ```
-* This uses Embedded Javascript Templating engine in order to render the index.html file, which in turns solve the problem of HMR (Hot Module Reload) often faced while using wsl 2.0 *
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* This uses Embedded Javascript Templating engine in order to render the index.html file, which in turns solve the problem of HMR (Hot Module Reload) often faced while using wsl 2.0 
